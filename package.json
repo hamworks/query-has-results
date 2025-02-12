@@ -7,6 +7,7 @@
 		"wp-env": "wp-env",
 		"dev": "wp-scripts start",
 		"build": "wp-scripts build",
+		"zip": "npm run build && wp-scripts plugin-zip",
 		"format": "wp-scripts format",
 		"lint-css": "wp-scripts lint-style",
 		"lint-css:fix": "wp-scripts lint-style --fix",
