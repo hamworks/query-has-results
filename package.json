@@ -1,0 +1,67 @@
+{
+	"name": "query-has-results",
+	"version": "0.1.0",
+	"author": "HAMWORKS Co., Ltd.",
+	"license": "GPL-2.0-or-later",
+	"scripts": {
+		"wp-env": "wp-env",
+		"dev": "wp-scripts start",
+		"build": "wp-scripts build",
+		"format": "wp-scripts format",
+		"lint-css": "wp-scripts lint-style",
+		"lint-css:fix": "wp-scripts lint-style --fix",
+		"lint-js": "wp-scripts lint-js",
+		"lint-js:fix": "wp-scripts lint-js --fix",
+		"lint-php": "composer lint",
+		"lint-php:fix": "composer format",
+		"packages-update": "wp-scripts packages-update",
+		"prepare": "husky"
+	},
+	"devDependencies": {
+		"@wordpress/env": "^10.17.0",
+		"@wordpress/scripts": "^30.10.0",
+		"@wordpress/prettier-config": "^4.17.0",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.4.3",
+		"npm-run-all": "^4.1.5",
+		"prettier": "npm:wp-prettier@3.0.3"
+	},
+	"lint-staged": {
+		"*.{js,json,ts,tsx}": [
+			"npm run format"
+		],
+		"*.{js,ts,tsx}": [
+			"npm run lint-js:fix"
+		],
+		"{*.css,*.scss}": [
+			"npm run lint-css:fix"
+		],
+		"*.php": [
+			"composer format",
+			"npm run lint-php"
+		]
+	},
+	"release-it": {
+		"hooks": {
+			"before:bump": [
+				"composer install --optimize-autoloader --prefer-dist --no-dev",
+				"bash ./bin/create-release.sh query-has-results ${version}",
+				"bash ./bin/create-zip.sh query-has-results"
+			],
+			"after:bump": "composer install --optimize-autoloader --prefer-dist",
+			"after:release": "bash ./bin/cleanup.sh query-has-results"
+		},
+		"github": {
+			"release": true,
+			"assets": [
+				"*.zip"
+			]
+		},
+		"npm": {
+			"publish": false
+		}
+	},
+	"volta": {
+		"node": "18.18.2"
+	}
+}
