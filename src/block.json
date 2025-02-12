@@ -1,0 +1,18 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 3,
+	"name": "hamworks/query-has-results",
+	"title": "Has Results",
+	"category": "theme",
+	"description": "Contains the block elements used to render content when query results are found.",
+	"textdomain": "hamworks",
+	"attributes": {},
+	"usesContext": [ "queryId", "query" ],
+	"ancestor": [ "core/query" ],
+	"supports": {
+		"html": false,
+		"inserter": true
+	},
+	"editorScript": "file:./index.js",
+	"editorStyle": "file:./index.css"
+}
