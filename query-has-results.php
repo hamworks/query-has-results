@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Query Has Results
  * Description: Contains the block elements used to render content when query results are found.
- * Version: 0.1.2
+ * Version: 0.1.3
  * Author: HAMWORKS
  * License: GPL-2.0+
  * GitHub Plugin URI: https://github.com/hamworks/query-has-results
